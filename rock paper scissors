@@ -1,0 +1,67 @@
+//Get the user's choice
+var userInput = prompt('Rock, paper, or scissors?');
+
+var getUserChoice = function (userInput) {
+    userInput = userInput.toLowerCase();
+
+    if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors' || userInput === 'bomb') {
+        return userInput;
+    } else {
+            console.log('Error, please try again');
+    }
+}
+        
+// Get the computers choice
+var getComputerChoice = function() {
+    var randomNumber = Math.floor(Math.random() * 3);
+
+    if (randomNumber === 0) {
+        return 'rock';
+        } else if (randomNumber === 1) {
+            return 'paper';
+        } else if (randomNumber === 2) {
+            return 'scissors';
+        }
+}
+
+var computerChoice = getComputerChoice()
+
+// compare the two choices to determine winner
+var determineWinner = function(userInput,computerChoice) {
+    if (userInput === computerChoice) {
+        return 'It is a tie!'
+    }
+
+    if (userInput === 'rock') {
+        if (computerChoice === 'paper') {
+            return 'Computer wins'
+        } else if (computerChoice === 'scissors') {
+            return 'User wins'
+        }
+    }
+
+    if (userInput === 'paper') {
+        if (computerChoice === 'rock') {
+            return 'User wins!'
+        } else if (computerChoice === 'scissors') {
+            return 'Computer wins!'
+            }
+    }
+
+    if (userInput === 'scissors') {
+        if (computerChoice === 'rock') {
+            return 'Computer wins!'
+        } else if (computerChoice === 'paper') {
+            return 'User wins!'
+        }
+    }
+
+    if (userInput === 'bomb') {
+        return 'User wins! You used the cheatcode eh?'
+    }
+}
+
+// display results
+console.log(`User's choice was: ${userInput}`)
+console.log(`Computer's choice was: ${computerChoice}`)
+console.log(determineWinner(userInput,computerChoice))
